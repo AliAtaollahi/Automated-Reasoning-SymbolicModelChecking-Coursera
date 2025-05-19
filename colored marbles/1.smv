@@ -1,0 +1,31 @@
+MODULE main
+
+VAR
+  B : 0..200;
+
+  R : 0..200;
+
+IVAR
+  choose : boolean;
+
+INIT
+  B = 1 & R = 2;
+
+TRANS
+  case
+    (B + R < 101 & choose) : next(B) = 2 * B & next(R) = R + 1;
+    (B + R < 101 & !choose): next(B) = B + 1 & next(R) = 2 * R;
+    TRUE                   : next(B) = B     & next(R) = R;
+  esac;
+
+CTLSPEC !EF ((B + R = 90) & (B >= 70));
+CTLSPEC !EF ((B + R = 91) & (B >= 70));
+CTLSPEC !EF ((B + R = 92) & (B >= 70));
+CTLSPEC !EF ((B + R = 93) & (B >= 70));
+CTLSPEC !EF ((B + R = 94) & (B >= 70));
+CTLSPEC !EF ((B + R = 95) & (B >= 70));
+CTLSPEC !EF ((B + R = 96) & (B >= 70));
+CTLSPEC !EF ((B + R = 97) & (B >= 70));
+CTLSPEC !EF ((B + R = 98) & (B >= 70));
+CTLSPEC !EF ((B + R = 99) & (B >= 70));
+CTLSPEC !EF ((B + R = 100) & (B >= 70));
